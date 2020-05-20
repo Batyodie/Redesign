@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import profilePage from '../views/profilePage'
 
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
+  {
+    path: '/',
+    name: 'profilePage',
+    component: profilePage
+  }
   // {
   //   path: '/about',
   //   name: 'About',

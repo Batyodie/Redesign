@@ -1,0 +1,18 @@
+@import "reset";
+@import '~normalize.css';
+@import "modules/vars";
+@import "modules/media";
+@import "modules/components/header";
+html, body{
+  font-family: $regular;
+  box-sizing: border-box;
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+
+
+

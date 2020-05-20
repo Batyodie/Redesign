@@ -1,0 +1,377 @@
+// header container
+.header{
+  display: flex;
+  width: 1440px;
+  max-width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px auto;
+  height: 80px;
+  //media styles header
+  // Window width <= 1320px
+  @include rwd(1320){
+    justify-content: space-around;
+    &__logo{
+      margin-right: 10px;
+    }
+    .main-nav{
+      margin-right: 10px;
+      &__list{
+        width: 300px;
+        margin-right: 10px;
+      }
+      &__item{
+        width: 60px;
+        margin: 0 1px;
+      }
+      &__link{
+        width: 60px;
+      }
+
+
+      &__profile{
+        width: 240px;
+      }
+    }
+    .input-group{
+      width: 230px;
+      margin: 0 10px;
+
+      &__input{
+        width: 180px;
+      }
+      &__opacity{
+        left: 190px;
+      }
+    }
+    .other-button{
+
+    }
+
+
+
+  }
+
+  // Window width <= 992px
+  @include lg {
+    justify-content: space-around;
+    .main-nav{
+      &__list{
+        display: none;
+      }
+    }
+    .input-group{
+      width: 367px;
+      margin: 0 5px;
+
+      &__input{
+        width: 240px;
+      }
+      &__opacity{
+        left: 330px;
+      }
+    }
+
+
+  }
+
+  // Window width <= 800px
+  @include rwd(800){
+    .main-nav{
+      &__profile{
+        width: 210px;
+      }
+      &__image{
+        margin-left: 15px;
+      }
+      &__profile-container{
+        margin-left: 0px;
+
+      }
+    }
+    .input-group{
+      width: 210px;
+      margin: 0;
+
+      &__input{
+        width: 170px;
+      }
+      &__opacity{
+        left: 170px;
+      }
+    }
+    .other-button{
+      width: 65px;
+    }
+  }
+
+
+  // Window width <= 576px
+@include sm {
+  &__logo{
+    display: none;
+  }
+  flex-wrap: wrap;
+  height: 150px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  .main-nav{
+    margin-left: 10px;
+    flex-direction: column;
+    width: 300px;
+    &__profile{
+      width: 300px;
+    }
+  }
+  .input-group{
+    width: 300px;
+    &__opacity{
+      left: 260px;
+    }
+  }
+
+}
+  // Window width <= 390px
+  @include rwd(390){
+    .main-nav{
+      width: 250px;
+      &__profile{
+        width: 250px;
+      }
+    }
+    .input-group{
+      width: 250px;
+      &__opacity{
+        left: 215px;
+      }
+    }
+
+
+  }
+}
+
+//header nav navigation
+.main-nav{
+  display: flex;
+  justify-content: center;
+  //ul block
+  &__list{
+    width: 450px;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  //li item
+  &__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 90px;
+    height: 80px;
+    position: relative;
+    &:active{
+      transform: translateY(4px);
+    }
+    &:hover{
+      .main-nav__icon path{
+        stroke: rgba(2, 117, 177, 1);
+        transition: 0.3s;
+      }
+      a{
+        color: rgba(2, 117, 177, 1);
+        transition: 0.3s;
+
+      }
+    }
+  }
+  //link li
+  &__link{
+    width: 90px;
+    height: 80px;
+    display: flex;
+    outline: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #181818;
+    svg{
+      margin-bottom: 5px;
+    }
+    // router link style
+    &.router-link-exact-active{
+      .main-nav__link-copy{
+        color: rgba(2, 117, 177, 1);
+      }
+      .main-nav__icon path {
+        stroke: rgba(2, 117, 177, 1);
+      }
+      &:after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 66px;
+        height: 2px;
+        background: #0275B1;
+        right: 0;
+        margin: 0 auto;
+        display: block;
+        transition: 0.3s;
+      }
+    }
+
+  }
+  &__link-copy{
+    font-family: $medium;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 5px 0 ;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  //header nav profile block
+  &__profile{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 330px;
+    height: 80px;
+  }
+  &__image{
+    margin-left: 32px;
+  }
+  &__profile-container{
+    margin-left: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 52px;
+  }
+  &__full-name{
+    margin: 5px 10px 5px 10px;
+    display: flex;
+  }
+  &__copy{
+    color: #747474;
+    font-size: 12px;
+    line-height: 11px;
+    margin-right: 10px ;
+  }
+  &__rating{
+    color: #02B033;
+    margin: 0px;
+    //extend styles header nav  li a p
+    @extend .main-nav__link-copy;
+
+  }
+  &__title{
+    //extend styles header nav  li a p
+    @extend .main-nav__link-copy;
+    text-align: left;
+    margin: 0;
+    cursor: pointer;
+  }
+  &__title-you{
+    font-family: $regular;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    color: rgba(24, 24, 24, 0.2);
+
+  }
+  &__statics{
+    display: flex;
+   justify-content: flex-end;
+  }
+
+}
+
+//header nav input
+.input-group{
+  width: 367px;
+  height: 80px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  //input search style
+  &__input{
+    border: 0;
+    width: 240px;
+    height: 50px;
+    &:focus::-webkit-input-placeholder {
+      color: transparent;
+    }
+    &::placeholder{
+      font-size: 16px;
+      line-height: 15px;
+      color: #CECECE;
+    }
+  }
+  &__appned{
+    margin-top: 5px;
+  }
+  //button opacity in input
+  &__opacity{
+    position: absolute;
+    left: 330px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 119, 181, 1);
+    border-radius: 4px;
+    padding: 0;
+    border: 0;
+    &:active{
+      transform: translateY(4px);
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &__icon{
+    display: flex;
+    align-items: center;
+    height: 42px;
+    margin-right: 25px;
+    opacity: 1;
+    z-index: 1;
+    transition: all .55s ease;
+  }
+
+}
+
+//burger button
+.other-button{
+  width: 90px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: #ffffff;
+  font-family: $medium;
+  &:active{
+    transform: translateY(4px);
+  }
+  &:hover{
+    border: 1px solid #0275B1;
+
+  }
+}
+.main-nav__link{
+  text-decoration: none;
+}

@@ -1,0 +1,473 @@
+// footer main container
+.footer{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 1440px;
+  max-width: 100%;
+  height: 215px;
+
+
+  &__logo-container{
+    width: 100px;
+    height: 137px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+
+  }
+  &__logo-style{
+    margin-bottom: 17px;
+
+
+  }
+  &__title__logo-title{
+    font-family: $medium;
+    font-size: 14px;
+    line-height: 150%;
+    color: $text;
+    font-weight: bold;
+  }
+  .logo-title-style{
+    color: $accent;
+  }
+  &__title{
+    font-family: $medium;
+    font-size: 12px;
+    line-height: 11px;
+    color: $text;
+    font-weight: bold;
+  }
+
+  // footer navigation
+  .navigation{
+    &__header{
+
+    }
+    &__body{
+      width: 485px;
+      height: 127px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+    }
+    &__list{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 135px;
+      height: 86px;
+      &:last-child{
+        .navigation__item{
+          &:first-child{
+            padding: 0;
+          }
+          &:last-child{
+            padding: 0 0 10px 0;
+          }
+        }
+
+      }
+    }
+    &__item{
+      // extend bases styles with title footer
+      @extend .footer__title;
+      font-family: $regular;
+      font-weight: normal;
+      &:active{
+        transform: translateY(4px);
+      }
+      &:last-child{
+        padding: 0;
+      }
+    }
+    &__link{
+      list-style: none;
+      text-decoration: none;
+      color: $text;
+
+      &:hover{
+        color: $accent;
+        transition: 0.3s;
+      }
+    }
+
+  }
+  //gamburger footer
+  &__gamburger{
+    display: none;
+    .ham {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 400ms;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .hamRotate.active {
+      transform: rotate(45deg);
+    }
+    .hamRotate180.active {
+      transform: rotate(180deg);
+    }
+    .line {
+      fill:none;
+      transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+      stroke:#000;
+      stroke-width:5.5;
+      stroke-linecap:round;
+    }
+    .ham1 .top {
+      stroke-dasharray: 40 139;
+    }
+    .ham1 .bottom {
+      stroke-dasharray: 40 180;
+    }
+    .ham1.active .top {
+      stroke-dashoffset: -98px;
+    }
+    .ham1.active .bottom {
+      stroke-dashoffset: -138px;
+    }
+  }
+
+  //  access block
+  &__access{
+    width: 170px;
+    height: 137px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+  }
+  &__header{
+    margin-bottom: 35px;
+  }
+
+  // access buttons
+
+  &__access-buttons{
+    .button{
+      display: flex;
+      justify-content: center;
+      text-align: left;
+      align-items: center;
+      border: 1px solid #0275B1;
+      border-radius: 4px;
+      transform: translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      backface-visibility: hidden;
+      -moz-osx-font-smoothing: grayscale;
+      transition-duration: 0.3s;
+      transition-property: transform;
+      &:active{
+          transform: translateY(4px);
+      }
+      &__body{
+        font-size: 12px;
+        line-height: 11px;
+        text-transform: uppercase;
+        margin-right: 43px;
+        margin-left: 7px;
+      }
+      //first button
+      &:first-child{
+        color: #FFFFFF;
+        background: rgba(2, 117, 177, 1);
+        &:hover{
+          background: #FFFFFF;
+          color: $accent;
+          transform: scale(1.1);
+
+          .button__append path{
+            stroke: rgba(2, 117, 177, 1);
+          }
+        }
+      }
+      // 2 button
+      &:last-child{
+        background: #FFFFFF;
+        color: $accent;
+        text-align: left;
+        justify-content: space-around;
+        &:hover{
+          background: $accent;
+          color: #FFFFFF;
+          .button__append path{
+            stroke: #FFFFFF;
+          }
+        }
+        .button__body{
+          margin: 0 50px 0 0;
+        }
+      }
+      margin-bottom: 10px;
+      width: 170px;
+      height: 32px;
+    }
+  }
+//  language block
+  &__language{
+    width: 270px;
+    height: 137px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    &-body{
+      height: 32px;
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+    }
+  }
+  //selected language
+  .select-box {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+
+    &__current {
+      position: relative;
+      box-shadow: 0 15px 30px -10px transparentize(#000, 0.9);
+      cursor: pointer;
+      outline: none;
+
+      &:focus {
+        & + .select-box__list {
+          opacity: 1;
+
+
+          animation-name: none;
+
+          .select-box__option {
+            cursor: pointer;
+          }
+        }
+
+        .select-box__icon {
+          transform: translateY(-50%) rotate(180deg);
+        }
+      }
+    }
+
+    &__icon {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      fill: rgba(2, 117, 177, 1);
+      width: 20px;
+      opacity: 0.3;
+      transition: 0.2s ease;
+    }
+
+    &__value {
+      display: flex;
+    }
+
+    &__input {
+      display: none;
+
+      &:checked + .select-box__input-text {
+        display: block;
+      }
+    }
+
+    &__input-text {
+      font-family: $medium;
+      display: none;
+      width: 100%;
+      margin: 0;
+      padding: 15px;
+      background-color: #fff;
+    }
+
+    &__list {
+      position: absolute;
+      width: 100%;
+      padding: 0;
+      list-style: none;
+      opacity: 0;
+
+
+      animation-name: HideList;
+      animation-duration: 0.5s;
+      animation-delay: 0.5s;
+      animation-fill-mode: forwards;
+      animation-timing-function: step-start;
+      box-shadow: 0 15px 30px -10px transparentize(#000, 0.9);
+    }
+
+    &__option {
+      display: block;
+      padding: 15px;
+      background-color: #fff;
+
+      &:hover,
+      &:focus {
+        color: #546c84;
+        background-color: #fbfbfb;
+      }
+    }
+  }
+  @keyframes HideList {
+    from {
+      transform: scaleY(1);
+    }
+    to {
+      transform: scaleY(0);
+    }
+  }
+}
+//media styles footer
+
+// Window width <= px
+@include rwd(1210){
+  .footer{
+    justify-content: space-between;
+  }
+}
+
+// Window width <= 1200px
+@include xl {
+  .footer{
+    .navigation{
+
+      &__body{
+        width: 450px;
+      }
+    }
+   &__language{
+     width: 200px;
+     &-body{
+
+       .select-box{
+         width: 70%;
+         &__input-text{
+           padding: 10px;
+         }
+       }
+     }
+   }
+
+  }
+
+}
+// Window width <= 992px
+@include lg {
+  .footer{
+    .navigation{
+
+      &__body{
+        width: 350px;
+      }
+      &__list{
+        width: 100px;
+      }
+    }
+    &__access{
+
+      &-buttons{
+        .button{
+          width: 130px;
+          &__body{
+            margin: 0 20px 0 7px;
+          }
+          &:last-child{
+            .button__body{
+              margin:0 40px 0 7px;
+            }
+          }
+        }
+      }
+    }
+    &__language{
+      width: 180px;
+      &-body{
+
+        .select-box{
+          width: 50%;
+          &__icon{
+            right: -30px;
+          }
+          &__input-text{
+            padding: 10px;
+          }
+        }
+      }
+    }
+
+  }
+
+}
+// Window width <= 850px
+@include rwd(850){
+  .footer{
+    .navigation{
+      margin: 0px 10px;
+    }
+    &__access{
+      margin: 0px 10px;
+    }
+    &__language{
+      width: 140px;
+      &-body{
+        justify-content: flex-end;
+
+
+        .select-box{
+          width: 30%;
+          margin: 0;
+          &__icon{
+            right: -70px;
+          }
+          &__input-text{
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+// Window width <= 768px
+@include md {
+  .footer{
+    .navigation{
+
+      &__body{
+        width: 300px;
+      }
+      &__list{
+        width: 90px;
+      }
+    }
+    &__access{
+      width: 130px;
+    }
+
+  }
+}
+// Window width <= 668px
+@include rwd(668){
+  .footer{
+    .navigation{
+      display: none;
+    }
+    &__gamburger{
+      display: block;
+    }
+  }
+}
+// Window width <= 576px
+@include sm {
+  .footer{
+    &__logo-container{
+      display: none;
+    }
+  }
+
+}

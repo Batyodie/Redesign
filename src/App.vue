@@ -9,9 +9,9 @@
 </template>
 
 <script>
-  import profilePage from './views/profilePage'
-  import HeaderNav from './components/headerNav'
-  import SectionFooter from './components/sectionFooter'
+import profilePage from './views/profilePage'
+import HeaderNav from './components/headerNav'
+import SectionFooter from './components/sectionFooter'
 
 export default {
   name: 'app',

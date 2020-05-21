@@ -176,7 +176,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
   .active{
     outline: 1px solid #0275B1;
@@ -202,4 +202,10 @@ export default {
      transform: translateX(30px);
      opacity: 0;
    }
+ @media (max-width: 576px) {
+   .header__logo{
+     display: none;
+   }
+
+ }
 </style>

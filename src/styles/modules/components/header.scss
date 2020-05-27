@@ -1,5 +1,6 @@
 // header container
 .header{
+  position: relative;
   display: flex;
   width: 1440px;
   max-width: 100%;
@@ -150,7 +151,11 @@
 
   }
 }
-
+@include rwd(1320){
+  body {
+    overflow-x: hidden;
+  }
+}
 //header nav navigation
 .main-nav{
   display: flex;
@@ -289,6 +294,7 @@
   }
   &__statics{
     display: flex;
+    align-items: flex-end;
    justify-content: flex-end;
   }
 
@@ -324,6 +330,7 @@
   &__opacity{
     position: absolute;
     left: 330px;
+    top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;

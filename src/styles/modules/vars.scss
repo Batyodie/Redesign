@@ -4,7 +4,9 @@ $accent: rgba(0, 119, 181, 1);
 $text: #181818;
 $bg: #0BAAD4;
 $hover: darken($bg, 10%);
-
+body{
+  overflow-x: hidden;
+}
 
 
 //fonts
@@ -27,3 +29,58 @@ $screen-lg-max: 992px;
 
 // Large tablets and desktops
 $screen-xl-max: 1200px;
+.active{
+  &:active{
+    transform: translateY(4px);
+
+  }
+}
+
+@mixin button($width, $height, $bgColor, $color: white, $border: 0, $br: 4px 4px 0px 0px){
+  width: $width;
+  height: $height;
+  background: $bgColor;
+  color: $color;
+  border: $border;
+  border-radius: $br;
+  &:hover{
+    background: linear-gradient(180deg, #0077B5 0%, #0E6795 100%);
+  }
+  &:hover .button__body{
+    color: white;
+  }
+  &:active{
+    height: 40px;
+    transition: 0ms;
+    transform: translateY(4px);
+
+  }
+  &__body {
+    color: $text;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 11px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: $medium;
+
+  }
+}
+// animation read more list
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
+// animation move router component
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+  /* .component-fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
+
+
+

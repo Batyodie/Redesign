@@ -1,24 +1,37 @@
 <template>
   <div id="app">
     <div id="nav">
-    <header-nav />
+    <header-nav
+      v-for="n in counters"
+      v-bind:key="n.id"
+    />
     </div>
-    <profilePage />
+    <router-view/>
+    <div class="main">
+      <sectionMain />
+    </div>
     <section-footer />
   </div>
 </template>
 
 <script>
-import profilePage from './views/profilePage'
 import HeaderNav from './components/headerNav'
 import SectionFooter from './components/sectionFooter'
+import SectionMain from './components/sectionMain'
 
 export default {
   name: 'app',
+  data: function () {
+    return {
+      counters: [
+        { id: 1, max: 69 }
+      ]
+    }
+  },
   components: {
+    SectionMain,
     SectionFooter,
-    HeaderNav,
-    profilePage
+    HeaderNav
   }
 }
 </script>

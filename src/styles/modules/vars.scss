@@ -7,6 +7,11 @@ $hover: darken($bg, 10%);
 body{
   overflow-x: hidden;
 }
+button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
 
 
 //fonts
@@ -65,6 +70,13 @@ $screen-xl-max: 1200px;
     font-family: $medium;
 
   }
+}
+.post__title{
+  font-size: 15px;
+  line-height: 13px;
+  color: #181818;
+  font-family: $bold;
+  margin-bottom: 5px;
 }
 // animation read more list
 .fade-enter-active, .fade-leave-active {

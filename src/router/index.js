@@ -8,6 +8,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'home',
+    component: profilePage
+  },
+  {
+    path: '/profilePage',
     name: 'profilePage',
     component: profilePage
   },

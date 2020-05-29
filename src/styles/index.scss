@@ -3,13 +3,15 @@
 @import "modules/vars";
 @import "modules/media";
 @import "modules/components/header";
-@import "modules/components/myProfile";
+@import "modules/components/pages/myProfile";
 @import "modules/components/sectionFooter";
+@import "modules/components/pages/feed";
 html, body{
   font-family: $regular;
   box-sizing: border-box;
   font-weight: normal;
   font-style: normal;
+  color: $text;
 }
 
 

@@ -8,6 +8,7 @@
         <div class="container-section-main">
           <!-- header main section-->
           <div  class="feed__header-main">
+            <!--section send-->
             <section  class="feed__send">
               <template>
               <div  class="feed__send-header-title">
@@ -19,8 +20,9 @@
                 <input @keyup.enter="addPost" v-model="getMessage" @focus="onFocus" @blur="onBlur" type="text" class="feed__send-input" placeholder="What’s on your mind?">
                 <ul class="feed__send-list-buttons">
                     <transition name="fade">
-                  <li v-bind:class="{btnOpacity:isActive}" class="feed__send-item">
-                    <button class="button-icon active">
+                  <li v-bind:class="{btnOpacity:!isActive}" class="feed__send-item">
+                    <input type="file" style="display: none" ref="fileInput" name="myFile" accept="PDF/text/*" @change="onFilePicked">
+                    <button  @click="onPickFile" class="button-icon active">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="1">
                           <path
@@ -32,8 +34,8 @@
                   </li>
                     </transition>
                   <transition name="fade">
-                  <li v-bind:class="{btnOpacity:isActive}" class="feed__send-item">
-                    <input type="file" style="display: none" ref="fileInput" name="myFile" id="" accept="image/*" @change="onFilePicked">
+                  <li v-bind:class="{btnOpacity:!isActive}" class="feed__send-item">
+                    <input type="file" style="display: none" ref="fileInput" name="myFile" accept="image/*" @change="onFilePicked">
                     <button @click="onPickFile" class="button-icon active">
                       <svg class="button-icon-image" width="25" height="25" viewBox="0 0 28 30" fill="none"
                            xmlns="http://www.w3.org/2000/svg">
@@ -48,8 +50,7 @@
                                 stroke-linejoin="round"/>
                         </g>
                         <defs>
-                          <filter id="filter0_d" x="-2" y="0" width="32" height="32" filterUnits="userSpaceOnUse"
-                                  color-interpolation-filters="sRGB">
+                          <filter id="filter0_d" x="-2" y="0" width="32" height="32">
                             <feFlood flood-opacity="0" result="BackgroundImageFix"/>
                             <feColorMatrix in="SourceAlpha" type="matrix"
                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
@@ -65,7 +66,7 @@
                   </li>
                   </transition>
                   <transition name="fade">
-                  <li v-bind:class="{btnOpacity:isActive}" class="feed__send-item">
+                  <li v-bind:class="{btnOpacity:!isActive}" class="feed__send-item">
                     <button class="button-icon active">
                       <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -90,7 +91,7 @@
                   </li>
                   </transition>
                   <transition name="fade">
-                  <li v-bind:class="{btnOpacity:isActive}"  class="feed__send-item">
+                  <li v-bind:class="{btnOpacity:!isActivePub}"  class="feed__send-item">
                     <button
                       @click="addPost"
                       type="submit"
@@ -125,6 +126,7 @@
                 </article>
               </template>
             </section>
+            <!--section sort-->
             <section class="feed__sort">
               <div class="feed__sort-header-list">
                 <div class="select-box2">
@@ -155,197 +157,390 @@
           </div>
           <!--    body main section      -->
           <div class="feed__body-main">
-            <section  v-for="post in reversedPosts" :key="post.id" class="feed__posts">
-              <article class="post">
-                <div class="post__header">
-                  <p class="post__people">
-                    <router-link to="/feedPage" class="post__people__link">Ted Bell, </router-link>
-                    <router-link to="/feedPage" class="post__people__link">Annette Nguyen</router-link>
-                    and
-                    <router-link to="/feedPage" class="post__people__link">Cody Hawkins</router-link>
-                    liked this
-                  </p>
-                  <button class="button active">
-                    <span class="button__social-icon-prepend"></span>
-                    <span class="button__social-icon-body"><img src="../../../assets/3point.svg" alt="other"
-                                                                class="social-icon"></span>
-                    <span class="button__social-icon-append"></span>
-                  </button>
-                </div>
-                <div class="post__body">
-                  <figure class="post__author-image">
-                    <img src="../../../assets/postPhoto.png" alt="author-image" class="post__image">
-                    <figcaption class="post__full-name-data">
-                      <h2 class="post__title">Theresa Steward</h2>
-                      <h3 class="post__sub-title">ThiOS developer</h3>
-                    </figcaption>
-                  </figure>
-                  <template v-if="isShow">
-                  <div  class="post__copy">
-                    <p class="post__copy-text">
-                      {{post.message}}
-                    </p>
-                    <br>
-                    <transition name="fade">
-                      <p class="post__copy-text">
-                        {{post.message}}
-                        <br>
-                        {{post.message}}
-                      </p>
-                    </transition>
-                  </div>
-<!--do not show figure if the picture or file has not been uploaded-->
-                    <template v-if="post.image">
-                      <figure v-bind:class="{ post__content__preload: completed, post__content_image: completed  }">
-                        <img :src="post.image" class="post__image">
-                      </figure>
-                    </template>
-                    <template v-else>
-                    </template>
-                  </template>
-                  <template v-else>
-                  <div class="post__copy">
-                    <p class="post__copy-text">
-                      {{post.message}}
-                    </p>
-                  </div>
-                    <!--do not show figure if the picture or file has not been uploaded-->
-                   <template v-if="post.image">
-                     <figure v-bind:class="{ post__content__preload: completed, post__content_image: completed  }">
-                       <img :src="post.image" class="post__image">
-                     </figure>
-                   </template>
-                    <template v-else>
-                    </template>
-                  </template>
-                  <div class="post__more">
-                    <button @click="getShow" class="button__more-link active">
-                    <span class="button__body">
-                      Read more
-                    </span>
-                    </button>
-                  </div>
-                </div>
-                <div class="post__footer">
-                  <ul class="post__social-list">
-                    <li class="post__social-item">
-                      <button class="button__social-icon">
-                      <span class="button__social-icon-prepend"> <img src="../../../assets/like.svg" alt="like"
-                                                                      class="social-icon active"></span>
-                        <span class="button__social-icon-body">{{post.likes}}</span>
-                        <span class="button__social-icon-append"></span>
-                      </button>
-                    </li>
-                    <li class="post__social-item">
-                      <button class="button__social-icon">
-                      <span class="button__social-icon-prepend"> <img src="../../../assets/comment.svg" alt="comment"
-                                                                      class="social-icon active"></span>
-                        <span class="button__social-icon-body">{{post.comments}}</span>
-                        <span class="button__social-icon-append"></span>
-                      </button>
-                    </li>
-                  </ul>
-                  <button class="button__social-icon mr">
-                    <span class="button__social-icon-prepend"><img src="../../../assets/repost.svg" alt="repost"
-                                                                   class="social-icon active"></span>
-                    <span class="button__social-icon-body">SHARE</span>
-                    <span class="button__social-icon-append"></span>
-                  </button>
-                </div>
-              </article>
-            </section>
-            <section class="feed__posts">
-              <article class="post">
-                <div class="post__header">
-                  <p class="post__people">
-                    <router-link to="/feedPage" class="post__people__link">Ted Bell, </router-link>
-                    <router-link to="/feedPage" class="post__people__link">Annette Nguyen</router-link>
-                    and
-                    <router-link to="/feedPage" class="post__people__link">Cody Hawkins</router-link>
-                    liked this
-                  </p>
-                  <button class="button active">
-                    <span class="button__social-icon-prepend"></span>
-                    <span class="button__social-icon-body"><img src="../../../assets/3point.svg" alt="other"
-                                                                class="social-icon"></span>
-                    <span class="button__social-icon-append"></span>
-                  </button>
-                </div>
-                <div class="post__body">
-                  <figure class="post__author-image">
-                    <img src="../../../assets/postPhoto.png" alt="author-image" class="post__image">
-                    <figcaption class="post__full-name-data">
-                      <h2 class="post__title">Theresa Steward</h2>
-                      <h3 class="post__sub-title">ThiOS developer</h3>
-                    </figcaption>
-                  </figure>
-                  <div v-if="isShow" class="post__copy">
-                    <p class="post__copy-text">
-                      What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t
-                      practiced all <span v-bind:class="{opacity: isMore}">summer? What was it to the Dursleys if Harry went back to school without any of his
-                      homework done? The </span><span v-bind:class="{opacity2: isMore}">Dursleys were what wizards called Muggles (not a drop of magical blood in their
-                      veins).</span>
-                    </p>
-                    <br>
-                    <transition name="fade">
-                      <p class="post__copy-text">
-                        What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t
-                        practiced all <span v-bind:class="{opacity: isMore}">summer? What was it to the Dursleys if Harry went back to school without any of his
-                      homework done? The </span><span v-bind:class="{opacity2: isMore}">Dursleys were what wizards called Muggles (not a drop of magical blood in their
-                      veins).</span>
-                      </p>
-                    </transition>
-                    <figure class="post__content-image"></figure>
-                  </div>
-                  <div v-else class="post__copy">
-                    <p class="post__copy-text">
-                      What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t
-                      practiced all <span v-bind:class="{opacity: isMore}">summer? What was it to the Dursleys if Harry went back to school without any of his
-                      homework done? The </span><span v-bind:class="{opacity2: isMore}">Dursleys were what wizards called Muggles (not a drop of magical blood in their
-                      veins).</span>
-                    </p>
-                    <figure class="post__content-image"></figure>
-                  </div>
-                  <div class="post__more">
-                    <button @click="getShow" class="button__more-link active">
-                    <span class="button__body">
-                      Read more
-                    </span>
-                    </button>
-                  </div>
-                </div>
-                <div class="post__footer">
-                  <ul class="post__social-list">
-                    <li class="post__social-item">
-                      <button class="button__social-icon">
-                      <span class="button__social-icon-prepend"> <img src="../../../assets/like.svg" alt="like"
-                                                                      class="social-icon active"></span>
-                        <span class="button__social-icon-body">42</span>
-                        <span class="button__social-icon-append"></span>
-                      </button>
-                    </li>
-                    <li class="post__social-item">
-                      <button class="button__social-icon">
-                      <span class="button__social-icon-prepend"> <img src="../../../assets/comment.svg" alt="comment"
-                                                                      class="social-icon active"></span>
-                        <span class="button__social-icon-body">9</span>
-                        <span class="button__social-icon-append"></span>
-                      </button>
-                    </li>
-                  </ul>
-                  <button class="button__social-icon mr">
-                    <span class="button__social-icon-prepend"><img src="../../../assets/repost.svg" alt="repost"
-                                                                   class="social-icon active"></span>
-                    <span class="button__social-icon-body">SHARE</span>
-                    <span class="button__social-icon-append"></span>
-                  </button>
-                </div>
-              </article>
-            </section>
+            <!--post component-->
+            <transition-group name="component-fade" mode="out-in" tag="div">
+                <post v-for="post in reversedPosts" :key="post.id"
+                      :post="post"
+                />
+            </transition-group>
+            <!--   <section class="feed__posts">-->
+<!--              <article class="post">-->
+<!--                <div class="post__header">-->
+<!--                  <p class="post__people">-->
+<!--                    <router-link to="/feedPage" class="post__people__link">Ted Bell, </router-link>-->
+<!--                    <router-link to="/feedPage" class="post__people__link">Annette Nguyen</router-link>-->
+<!--                    and-->
+<!--                    <router-link to="/feedPage" class="post__people__link">Cody Hawkins</router-link>-->
+<!--                    liked this-->
+<!--                  </p>-->
+<!--                  <button class="button active">-->
+<!--                    <span class="button__social-icon-prepend"></span>-->
+<!--                    <span class="button__social-icon-body"><img src="../../../assets/3point.svg" alt="other"-->
+<!--                                                                class="social-icon"></span>-->
+<!--                    <span class="button__social-icon-append"></span>-->
+<!--                  </button>-->
+<!--                </div>-->
+<!--                <div class="post__body">-->
+<!--                  <figure class="post__author-image">-->
+<!--                    <img src="../../../assets/postPhoto.png" alt="author-image" class="post__image">-->
+<!--                    <figcaption class="post__full-name-data">-->
+<!--                      <h2 class="post__title">Theresa Steward</h2>-->
+<!--                      <h3 class="post__sub-title">ThiOS developer</h3>-->
+<!--                    </figcaption>-->
+<!--                  </figure>-->
+<!--                  <div v-if="isShow" class="post__copy">-->
+<!--                    <p class="post__copy-text">-->
+<!--                      What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t-->
+<!--                      practiced all <span v-bind:class="{opacity: isMore}">summer? What was it to the Dursleys if Harry went back to school without any of his-->
+<!--                      homework done? The </span><span v-bind:class="{opacity2: isMore}">Dursleys were what wizards called Muggles (not a drop of magical blood in their-->
+<!--                      veins).</span>-->
+<!--                    </p>-->
+<!--                    <br>-->
+<!--                    <transition name="fade">-->
+<!--                      <p class="post__copy-text">-->
+<!--                        What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t-->
+<!--                        practiced all <span v-bind:class="{opacity: isMore}">summer? What was it to the Dursleys if Harry went back to school without any of his-->
+<!--                      homework done? The </span><span v-bind:class="{opacity2: isMore}">Dursleys were what wizards called Muggles (not a drop of magical blood in their-->
+<!--                      veins).</span>-->
+<!--                      </p>-->
+<!--                    </transition>-->
+<!--                    <figure class="post__content-image"></figure>-->
+<!--                  </div>-->
+<!--                  <div v-else class="post__copy">-->
+<!--                    <p class="post__copy-text">-->
+<!--                      What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t-->
+<!--                      practiced all <span v-bind:class="{opacity: isMore}">summer? What was it to the Dursleys if Harry went back to school without any of his-->
+<!--                      homework done? The </span><span v-bind:class="{opacity2: isMore}">Dursleys were what wizards called Muggles (not a drop of magical blood in their-->
+<!--                      veins).</span>-->
+<!--                    </p>-->
+<!--                  </div>-->
+<!--                  <div class="post__more">-->
+<!--                    <button @click="getShow" class="button__more-link active">-->
+<!--                    <span class="button__body">-->
+<!--                      Read more-->
+<!--                    </span>-->
+<!--                    </button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="post__footer">-->
+<!--                  <ul class="post__social-list">-->
+<!--                    <li class="post__social-item">-->
+<!--                      <button class="button__social-icon">-->
+<!--                      <span class="button__social-icon-prepend"> <img src="../../../assets/like.svg" alt="like"-->
+<!--                                                                      class="social-icon active"></span>-->
+<!--                        <span class="button__social-icon-body">42</span>-->
+<!--                        <span class="button__social-icon-append"></span>-->
+<!--                      </button>-->
+<!--                    </li>-->
+<!--                    <li class="post__social-item">-->
+<!--                      <button class="button__social-icon">-->
+<!--                      <span class="button__social-icon-prepend"> <img src="../../../assets/comment.svg" alt="comment"-->
+<!--                                                                      class="social-icon active"></span>-->
+<!--                        <span class="button__social-icon-body">9</span>-->
+<!--                        <span class="button__social-icon-append"></span>-->
+<!--                      </button>-->
+<!--                    </li>-->
+<!--                  </ul>-->
+<!--                  <button class="button__social-icon mr">-->
+<!--                    <span class="button__social-icon-prepend"><img src="../../../assets/repost.svg" alt="repost"-->
+<!--                                                                   class="social-icon active"></span>-->
+<!--                    <span class="button__social-icon-body">SHARE</span>-->
+<!--                    <span class="button__social-icon-append"></span>-->
+<!--                  </button>-->
+<!--                </div>-->
+<!--              </article>-->
+<!--            </section>-->
           </div>
         </div>
         <!--    sidebar right  section    -->
         <section class="sidebar">
+          <aside class="dashboard">
+            <div class="dashboard__header">
+              <figure class="dashboard__header-background-logo">
+                <img src="../../../assets/213.png" alt="" class="background-image">
+              </figure>
+              <figure class="dashboard__header-profile-face">
+                <img src="../../../assets/Ellipse3.png" alt="" class="profile-face__image">
+              <figcaption class="dashboard__header-profile-text">
+              <div class="dashboard__header-title">
+                <h1 class="dashboard__title">
+                  Dmitry Kargaev
+                </h1>
+                <img src="../../../assets/LogoIn.svg" alt="" class="dashboard__header-title-icon">
+              </div>
+                <div class="dashboard__header-copy">
+                  <p class="dashboard__copy"> Freelance UX/UI designer 80  web design, mobile apps (iOS & android) and creative projects. Open to offers. </p>
+                </div>
+              </figcaption>
+              </figure>
+              <div class="dashboard__header-button">
+                <button class="button active">
+                  <span class="button__body">
+                    write new article
+                  </span>
+                </button>
+              </div>
+            </div>
+              <aside class="groups">
+                <div class="groups__header visitors__header">
+                  <h2 class="groups__title visitors__title">MY GROUPS</h2>
+                  <!--show block-->
+                  <p class="groups__link visitors__link" @click="123">
+                    <router-link  to="/" class="groups__link visitors__link">EDIT LIST</router-link>
+                  </p>
+                </div>
+                <div class="visitors__body groups__body">
+                  <ul class="visitors__list" v-if="completed != completed">
+                    <li class="visitors__item">
+                      <div class="visitors__titles-container-image">
+                        <img src="../../../assets/gerp.png" alt="image" class="visitors_image">
+                      </div>
+                      <div class="visitors__titles-container">
+                        <h2 class="visitors__item-title">
+                          Moscow State <br>
+                          Linguistical <br>
+                          University</h2>
+                      </div>
+                    </li>
+                    <li class="visitors__item size-mr">
+                      <div class="visitors__titles-container-image">
+                        <img src="../../../assets/gerp2.png" alt="image" class="visitors_image">
+                      </div>
+                      <div class="visitors__titles-container size">
+                        <h2 class="visitors__item-title">Digital freelancers
+                          group</h2>
+                      </div>
+                    </li>
+                    <li class="visitors__item">
+                      <div class="visitors__titles-container-image">
+                        <img src="../../../assets/g.png" alt="image" class="visitors_image">
+                      </div>
+                      <div class="visitors__titles-container">
+                        <h2 class="visitors__item-title">
+                          Interaction<br>
+                          design <br>
+                          association</h2>
+                      </div>
+                    </li>
+                    <transition name="fade">
+                      <li class="visitors__item">
+                        <div class="visitors__titles-container-image">
+                          <img src="../../../assets/g.png" alt="image" class="visitors_image">
+                        </div>
+                        <div class="visitors__titles-container">
+                          <h2 class="visitors__item-title">
+                            Interaction<br>
+                            design <br>
+                            association</h2>
+                        </div>
+                      </li>
+                    </transition>
+                  </ul>
+                  <ul class="visitors__list" v-else>
+                    <li class="visitors__item">
+                      <div class="visitors__titles-container-image">
+                        <img src="../../../assets/gerp.png" alt="image" class="visitors_image">
+                      </div>
+                      <div class="visitors__titles-container">
+                        <h2 class="visitors__item-title">
+                          Moscow State <br>
+                          Linguistical <br>
+                          University</h2>
+                      </div>
+                    </li>
+                    <li class="visitors__item size-mr">
+                      <div class="visitors__titles-container-image">
+                        <img src="../../../assets/gerp2.png" alt="image" class="visitors_image">
+                      </div>
+                      <div class="visitors__titles-container size">
+                        <h2 class="visitors__item-title">Digital freelancers
+                          group</h2>
+                      </div>
+                    </li>
+                    <li class="visitors__item">
+                      <div class="visitors__titles-container-image">
+                        <img src="../../../assets/g.png" alt="image" class="visitors_image">
+                      </div>
+                      <div class="visitors__titles-container">
+                        <h2 class="visitors__item-title">
+                          Interaction<br>
+                          design <br>
+                          association</h2>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                  <div class="recommendations__footer groups__footer" style="margin-left: 30px;" @click="123">
+                    <router-link to="/" class="recommendations__link">Show all (4)</router-link>
+                  </div>
+              </aside>
+            <aside class="hashtags" style="margin-top: 20px;">
+              <div class="hashtags__header recommendations__header">
+                <h2 class="hashtags__title recommendations__title">
+                  Followed hashtags
+                </h2>
+              </div>
+              <div class="hashtags__body">
+               <div class="hashtags__container">
+                  <div class="hashtags__item"><span class="hashtags__item__style"> #work</span> </div>
+                  <div class="hashtags__item"><span class="hashtags__item__style"> #business</span></div>
+                  <div class="hashtags__item"><span class="hashtags__item__style"> #hr</span></div>
+               </div>
+                <div class="hashtags__container">
+                  <div class="hashtags__item"><span class="hashtags__item__style"> #userinterface</span></div>
+                  <div class="hashtags__item"><span class="hashtags__item__style"> #digital</span></div>
+                </div>
+                <div class="hashtags__container">
+                  <div class="hashtags__item"><span class="hashtags__item__style"> #userexperience</span></div>
+                  <div class="hashtags__item"><span class="hashtags__item__style"> #ux</span></div>
+                </div>
+                <div class="hashtags__container">
+                  <div class="hashtags__item"><span class="hashtags__item__style">#freelance</span></div>
+                  <div class="hashtags__item"><span class="hashtags__item__style"> #ui</span></div>
+                </div>
+              </div>
+            </aside>
+            <aside class="trending recommendations"  style="margin-top: 20px;">
+              <div class="trending__header recommendations__header">
+                <h2 class="trending__title recommendations__title">
+                  Trending articles
+                </h2>
+              </div>
+              <div class="trending__body recommendations__body">
+                <!--  if show true view block  -->
+                <ul class="trending__list recommendations__list" v-if="completed != completed">
+                  <li class="trending__item recommendations__item">
+                    <div class="trending__item-contaiener-image recommendations__item-container-image">
+                      <img src="../../../assets/design.png" alt="video" class="trending_item-image-prev recommendations_item-image-prev">
+                    </div>
+                    <div class="trending__item-container recommendations__item-container">
+                      <div class="trending recommendations__item-title">
+                        <h2 class="trending__title" style="margin-bottom: 5px;">
+                          How I make
+                          <br>
+                          cool designs?
+                        </h2>
+                      </div>
+                      <div class="trending__item-sub-title recommendations__item-sub-title">
+                        6,340 viewers
+                      </div>
+                    </div>
+                  </li>
+                  <li class="trending__item recommendations__item">
+                    <div class="trending recommendations__item-container-image">
+                      <img src="../../../assets/hr.png" alt="video" class="trending recommendations_item-image-prev">
+                    </div>
+                    <div class="trending recommendations__item-container">
+                      <div class="trending recommendations__item-title">
+                        <h2 class="trending__title" style="margin-bottom: 5px;">
+                          How I make
+                          <br>
+                          cool designs?
+                        </h2>
+                      </div>
+                      <div class="trending recommendations__item-sub-title">
+                        6,340 viewers
+                      </div>
+                    </div>
+                  </li>
+                  <li class="trending__item recommendations__item">
+                    <div class="trending recommendations__item-container-image">
+                      <img src="../../../assets/testing.png" alt="video" class="trending recommendations_item-image-prev">
+                    </div>
+                    <div class="trending recommendations__item-container">
+                      <div class="trending recommendations__item-title">
+                        <h2 class="trending__title" style="margin-bottom: 5px;">
+                          Advices for
+                          <br>
+                          young HR-manage
+                        </h2>
+                      </div>
+                      <div class="trending recommendations__item-sub-title">
+                        8,123 viewers
+                      </div>
+                    </div>
+                  </li>
+                <!--  animation end view block-->
+                  <transition name="fade">
+                    <li class="trending__item recommendations__item">
+                      <div class="trending recommendations__item-container-image">
+                        <img src="../../../assets/testing.png" alt="video" class="trending recommendations_item-image-prev">
+                      </div>
+                      <div class="trending recommendations__item-container">
+                        <div class="trending recommendations__item-title">
+                          <h2 class="trending__title" style="margin-bottom: 5px;">
+                            A little about
+                            <br>
+                            usability testing
+                          </h2>
+                          <div class="trending__item-sub-title recommendations__item-sub-title">
+                            3,912 viewers
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </transition>
+                </ul>
+                <ul class="trending recommendations__list" v-else>
+                  <li class="trending__item recommendations__item">
+                    <div class="trending__item-container-image recommendations__item-container-image">
+                      <img src="../../../assets/design.png" alt="video" class="trending_item-image-prev recommendations_item-image-prev">
+                    </div>
+                    <div class="trending__item-container recommendations__item-container">
+                      <div class="trending recommendations__item-title">
+                        <h2 class="trending__title" style="margin-bottom: 5px;">
+                          How I make
+                          <br>
+                          cool designs?
+                        </h2>
+                      </div>
+                      <div class="trending__item-sub-title recommendations__item-sub-title">
+                        6,340 viewers
+                      </div>
+                    </div>
+                  </li>
+                  <li class="trending__item recommendations__item">
+                    <div class="trending recommendations__item-container-image">
+                      <img src="../../../assets/hr.png" alt="video" class="trending recommendations_item-image-prev">
+                    </div>
+                    <div class="trending recommendations__item-container">
+                      <div class="trending recommendations__item-title">
+                        <h2 class="trending__title" style="margin-bottom: 5px;">
+                          Advices for
+                          <br>
+                          young HR-manage
+                        </h2>
+                      </div>
+                      <div class="trending recommendations__item-sub-title">
+                        8,123 viewers
+                      </div>
+                    </div>
+                  </li>
+                  <li class="trending__item recommendations__item">
+                    <div class="trending recommendations__item-container-image">
+                      <img src="../../../assets/testing.png" alt="video" class="trending recommendations_item-image-prev">
+                    </div>
+                    <div class="trending recommendations__item-container">
+                      <div class="trending recommendations__item-title">
+                      <h2 class="trending__title" style="margin-bottom: 5px;">
+                        A little about
+                        <br>
+                        usability testing
+                      </h2>
+                      </div>
+                      <div class="trending recommendations__item-sub-title">
+                        3,912 viewers
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!--  if show true view block  -->
+              <div class="trending recommendations__footer" @click="completed != completed">
+                <router-link to="/" class="trending recommendations__link">See all trending recommendations</router-link>
+              </div>
+            </aside>
+          </aside>
         </section>
       </div>
     </section>
@@ -353,38 +548,72 @@
 </template>
 
 <script>
+import Post from './modules/childComponent/post'
 export default {
+  components: { Post },
+  props: {
+    basisPosts: {
+      type: Array
+    }
+  },
   name: 'feedPages',
   data: () => {
     return {
       getMessage: '',
-      isMore: true,
-      isShow: false,
       focused: false,
       isActive: false,
+      isActivePub: false,
+      // post obj
       postId: Date.now(),
-      posts: [],
+      posts1: [],
       files: [],
+      posts: {
+        image: {
+          fileName: '',
+          size: '',
+          type: ''
+        }
+      },
+      files2: [],
       completed: true,
-      fileName: ''
+      fileName: '',
+      image: {
+      }
     }
   },
   methods: {
-    getShow () {
-      this.isShow = !this.isShow
-      this.isMore = false
-    },
     // add post in feed page
     addPost () {
       if (this.getMessage.trim().length === 0) {
         return this.getMessage
       } else {
-        this.posts.push({
+        if (this.files[this.image.name] === undefined) {
+          this.files[this.image.name] = {
+            0: {
+              fileName: '',
+              type: '',
+              size: ''
+            }
+          }
+        }
+        // add new post in Array files
+        this.files2.push({
+          Name: 'Kyle Fisher',
+          profession: 'Product designer at Commandor Corp.',
+          profileFace: 'https://cdn1.savepice.ru/uploads/2020/5/30/3a0b077358bb1d44874a37a6d471cc31-full.png',
           id: this.postId,
+          flag: true,
+          postFlag: false,
+          feedSocial: 'and liked this',
+          feedLink: 'Ted Bell,Annette Nguyen, Cody Hawkins',
           message: this.getMessage,
-          image: this.imageUrl || '',
-          likes: 1,
-          comments: 1
+          files: this.files[this.image.name] || '',
+          fileName: this.files[this.image.name].fileName || null,
+          type: this.files[this.image.name].type || null,
+          size: this.files[this.image.name].size || null,
+          url: this.imageUrl || '',
+          likes: 0,
+          comments: 0
         })
         this.postId++
         this.getMessage = ''
@@ -394,18 +623,21 @@ export default {
         this.image = ''
         this.imageUrl = ''
         this.files = ''
+        this.files = []
       }
     },
     // focus input
     onFocus () {
-      this.isActive = false
+      this.isActive = true
+      this.isActivePub = true
       this.focused = true
     },
     onBlur () {
       this.focused = false
-      this.isActive = true
+      this.isActive = false
     },
 
+    // pick file for add post
     onPickFile () {
       this.$refs.fileInput.click()
     },
@@ -428,21 +660,38 @@ export default {
         size: this.image.size || '',
         type: this.image.type || ''
       })
+      this.files = this.files.reduce((p, c) => {
+        p[c.fileName] = c
+        return p
+      }, {})
       const input = this.$refs.fileInput
       input.type = 'text'
       input.type = 'file'
-      this.image = ''
     },
     getOutFile () {
+      const input = this.$refs.fileInput
+      input.type = 'text'
+      input.type = 'file'
+      // this.image = ''
+      this.imageUrl = ''
       this.files = ''
       this.files = []
-      return this.files
     }
   },
+  /* turn array posts */
   computed: {
     reversedPosts () {
-      return this.posts.slice().reverse()
+      return this.files2.slice().reverse()
     }
+  },
+  mounted () {
+    // add basis posts
+    this.posts1 = this.basisPosts.slice()
+    this.posts1 = this.posts1.reduce((p, c) => {
+      p[c.Name] = c
+      return p
+    }, {})
+    this.files2.push(this.posts1['Audrey Alexander'], this.posts1['Brandon Wilson'], this.posts1['Kyle Fisher'], this.posts1['Theresa Steward'])
   }
 }
 </script>
@@ -456,5 +705,14 @@ export default {
   }
   .btnOpacity{
     opacity: 0.2;
+    &:hover{
+      opacity: 1;
+    }
+    &:focus{
+      opacity: 1;
+    }
+    &:active{
+      opacity: 1;
+    }
   }
 </style>

@@ -78,6 +78,14 @@ $screen-xl-max: 1200px;
   font-family: $bold;
   margin-bottom: 5px;
 }
+.button__body-style{
+  font-size: 12px;
+  line-height: 11px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+
+}
 // animation read more list
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;

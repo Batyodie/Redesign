@@ -82,8 +82,7 @@
     }
     // li items
     &-item{
-
-      transition: 0.5s;
+      transition: 0.3s;
      .button-icon{
        background: $accent;
        width: 32px;
@@ -122,6 +121,7 @@
         height: 40px;
         width: 45%;
         margin-left: 15px;
+        margin-right: 15px;
         align-items: center;
         justify-content: flex-start;
         display: flex;
@@ -153,6 +153,7 @@
         color: $text;
       }
       &__data{
+
         height: 40px;
         align-items: center;
         display: flex;
@@ -325,7 +326,7 @@
             text-decoration: none;
           }
         }
-        // post body
+        // post body content
         &__body{
           width: 100%;
           display: flex;
@@ -336,7 +337,7 @@
           padding: 0;
         }
         &__author-image{
-          width: 200px;
+          width: 265px;
           height: 52px;
           margin-bottom: 15px;
           margin-left: 30px;
@@ -370,6 +371,61 @@
           &-text{
             font-size: 14px;
             line-height: 150%;
+          }
+        }
+        // preview file for publication posts
+        .preview-file{
+          margin-left: 30px;
+          height: 80px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          // preview file image
+          &__logo{
+            height: 80px;
+            width: 45%;
+            align-items: center;
+            justify-content: flex-start;
+            display: flex;
+          }
+          &__image{
+            margin-right: 15px;
+          }
+          &__image__send-size{
+            width: 42px;
+            height: 42px;
+          }
+          // preview file name and size
+          &__name{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-start;
+            height: 40px;
+          }
+          &__title{
+            // extend post title style
+            @extend .post__title;
+            font-family: $medium;
+            margin: 0;
+          }
+          &__size{
+            font-size: 10px;
+            line-height: 150%;
+            /* identical to box height, or 15px */
+            color: $text;
+          }
+          &__data{
+            height: 40px;
+            align-items: center;
+            display: flex;
+            margin-right: 30px;
+            .button__download{
+              &-body{
+                color: $accent;
+              }
+              &-image{}
+            }
           }
         }
         // post content image-logo
@@ -408,7 +464,7 @@
           display: flex;
           justify-content: space-between;
         }
-        //buton icon list
+        //button icon list
         &__social-list{
           height: 50px;
           width: 212px;
@@ -426,7 +482,7 @@
           }
         }
         .button__social-icon{
-
+          // extend basis button styles
           @extend .button__social-icon;
           .button__social-icon-prepend{
             @extend .button__social-icon-prepend;
@@ -447,6 +503,153 @@
       }
     }
   }
+  //section sidebar menu right
+  .sidebar{
+    @extend .sidebar;
+    width: 290px;
+    margin-left: 40px;
+    //main container
+    .dashboard{
+      &__title{
+        margin-right: 5px;
+        // extend basis title  styles
+        @extend .dashboard__title;
+        font-size: 14px;
+        font-family: $bold;
+      }
+      &__copy{
+        font-size: 12px;
+        line-height: 150%;
+        text-align: center;
+      }
+      // extend basis grid styles
+      @extend .dashboard;
+      .profile-face__image{
+        position: absolute;
+        top: 100px;
+      }
+      &__header{
+        // extend basis grid styles
+        @extend .dashboard__header;
+        flex-direction: column;
+        &-background-logo{
+
+          .background-image{
+            min-width: 100%;
+          }
+        }
+        &-profile-face{
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          .dashboard__header-profile-text{
+            margin-top: 60px;
+            height: 90px;
+          }
+        }
+        &-title{
+          display: flex;
+          justify-content: center;
+          margin-bottom: 10px;
+
+        }
+        &-copy{
+
+        }
+        &-button{
+          margin-top: 20px;
+          width: 100%;
+          height: 75px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .button{
+            width: 230px;
+            height: 32px;
+            background-color: $accent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            &__body{
+              @extend .button__body-style;
+            }
+          }
+        }
+      }
+    }
+    .groups{
+      // extend basis grid styles
+      @extend .visitors;
+      width: 290px;
+      &__header{
+        height: 30px;
+        flex-direction: row;
+        justify-content: space-between;
+        .visitors__link{
+          margin-right: 5px;
+        }
+        .visitors__title{
+
+        }
+      }
+      &__body{
+        .visitors__list{
+          .size-mr{
+            margin-left: 20px;
+          }
+          .visitors__item{
+            height: 80px;
+            justify-content: center;
+            width: 231px;
+            .size{
+              width: 140px !important;
+            }
+            .visitors__titles-container{
+              margin-left: 15px;
+              width: 100px;
+              .visitors__item-title{
+                font-family: $bold;
+                line-height: 125%;
+              }
+            }
+          }
+        }
+      }
+    }
+    //aside section trending
+    .trending{
+      .trending__header{
+        align-items: flex-start;
+      }
+      .trending__title{
+        line-height: 125%;
+      }
+    }
+    //aside section hashtags
+    .hashtags{
+      .recommendations__header{
+        align-items: flex-start;
+        margin-bottom: 40px;
+      }
+      &__body{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+      &__container{
+        display: flex;
+      }
+      &__item{
+        height: 32px;
+        margin: 10px
+
+      }
+    }
+  }
+
 }
 // button icon style in footer post
 .button__social-icon{
@@ -464,4 +667,129 @@
     font-size: 12px;
   }
   .button__social-icon-append{}
+}
+// media feed
+@include md {
+  .feed{
+    .container{
+      &-section-main{
+        width: 100% !important;
+      }
+    }
+    &__send{
+      &-input-group{
+        margin-left: 0px;
+      }
+      &-input{
+        margin-bottom: 20px;
+        width: 100%;
+      }
+      &-list-buttons{
+        width: 100%;
+        justify-content: space-around;
+      }
+      .preview-file{
+        margin-left: 0px;
+        &__title{
+          font-size: 13px;
+        }
+        &__logo{
+          width: 165px;
+          margin-left: 0px;
+        }
+        &__data{
+          margin-right: 0px;
+          .button__download{
+            width: 30px;
+            height: 25px;
+            &__body{
+
+            }
+          }
+        }
+      }
+    }
+  }
+  .feed__body-main .feed__posts .post .preview-file__logo {
+    width: 189px;
+  }
+  .feed__body-main .feed__posts .post .preview-file__data{
+    margin-right: 0px;
+  }
+  .post__title, .feed__body-main .feed__posts .post .preview-file__title, .feed__send .preview-file__title{
+    font-size: 13px;
+  }
+  .feed{
+    .sidebar{
+      display: none;
+      width: 250px;
+      .dashboard{
+        width: 250px;
+        &__title{
+
+        }
+        &__header-background-logo{
+          .background-image{
+            width: 250px;
+          }
+        }
+        &__header-profile-face{
+          width: 250px;
+          .profile-face__image{
+            width: 80px;
+            height: 80px;
+          }
+        }
+        &__header-profile-text{
+          width: 250px;
+        }
+        &__header-title{
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+@include sm{
+  .feed{
+    .container{
+      &-section-main{
+        width: 100% !important;
+      }
+    }
+    &__send{
+      &-input-group{
+        margin-left: 0px;
+        flex-direction: column;
+      }
+      &-input{
+        margin-bottom: 20px;
+        width: 100%;
+      }
+      &-list-buttons{
+        width: 100%;
+        justify-content: space-around;
+      }
+      .preview-file{
+        margin-left: 0px;
+        &__title{
+          font-size: 13px;
+        }
+        &__logo{
+          width: 165px;
+          margin-left: 0px;
+        }
+        &__data{
+          margin-right: 0px;
+          .button__download{
+            width: 30px;
+            height: 25px;
+            &__body{
+
+            }
+          }
+        }
+      }
+    }
+  }
 }

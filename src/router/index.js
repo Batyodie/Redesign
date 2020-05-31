@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import profilePage from '../views/profilePage'
 import feedPage from '../views/feedPage'
+import networkPage from '../views/networkPage'
 
 Vue.use(VueRouter)
 
@@ -20,8 +21,14 @@ const routes = [
     path: '/feedPage',
     name: 'feedPage',
     component: feedPage
+  },
+  {
+    path: '/networkPage',
+    name: 'networkPage',
+    component: networkPage
 
   }
+
 ]
 
 const router = new VueRouter({

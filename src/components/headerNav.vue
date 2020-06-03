@@ -228,6 +228,7 @@ export default {
     this.removeScrollHandler()
   }
 }
+
 </script>
 
 <style lang="scss" scoped>

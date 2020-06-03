@@ -1,6 +1,6 @@
 <template>
   <div class="profilePage">
-    <profile-pages
+    <ProfilePages
       v-for="n in counters"
       v-bind:key="n.id"
     />

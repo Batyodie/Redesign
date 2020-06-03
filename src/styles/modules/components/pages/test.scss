@@ -1,0 +1,78 @@
+//section network
+.network{
+  .container{
+    margin-top: 40px;
+    .sidebar{
+      height: 306px;
+      &__list{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 17px;
+      }
+      &__item{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 32px;
+        margin-bottom: 17px;
+      }
+      &__container{
+        width: 115px;
+        display: flex;
+        align-items: center;
+        &::after{
+          opacity: 1;
+          content: '';
+          width: 10px;
+          height: 51px;
+          background: #0275B1;
+          border-radius: 0px;
+          position: absolute;
+          display: block;
+          left: 107px;
+          top: 33px;
+        }
+        a{
+          width: 115px;
+          display: flex;
+          text-decoration: none;
+          color: $text;
+        }
+      }
+      &__link{
+        transition: 0.5s;
+        &.router-link-exact-active{
+        }
+      }
+      &__logo{
+        display: flex;
+      }
+      &__title{
+        font-size: 12px;
+        line-height: 11px;
+        font-family: $medium;
+        margin-left: 10px;
+      }
+      &__statics{
+        display: flex;
+        align-items: center;
+        height: 17px;
+        &-icon{
+          width: 9px;
+          height: 9px;
+          border-radius: 27px;
+          background-color: #ED8F03;
+        }
+      }
+      &__counter{
+        font-size: 12px;
+        line-height: 11px;
+        font-family: $bold;
+        margin-right: 8px;
+        &__color{
+          color: #ED8F03;
+        }
+      }
+    }
+  }
+}

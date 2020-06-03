@@ -84,8 +84,75 @@ $screen-xl-max: 1200px;
   text-align: center;
   text-transform: uppercase;
   color: #FFFFFF;
-
 }
+// grid container
+// main container section profile
+.profile {
+  width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+  // grid container position
+  .container {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    // section profile: avatar, profile information, projects
+    .container-section-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      width: 69.5%;
+    }
+  }
+.visitors {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.sidebar {
+  width: 23.7%;
+}
+// sidebar flex container
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  // header dashboard
+  &__header{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 30px auto;
+    align-items: center;
+  }
+  &__title{
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    font-family: $medium;
+  }
+  // extend animation click
+  &__link{
+    @extend .active;
+    font-size: 12px;
+    line-height: 11px;
+    text-align: right;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    color: $accent;
+    text-decoration: none;
+  }
+}
+
+
+
 // animation read more list
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
@@ -97,8 +164,7 @@ $screen-xl-max: 1200px;
 .component-fade-enter-active, .component-fade-leave-active {
   transition: opacity .3s ease;
 }
-.component-fade-enter, .component-fade-leave-to
-  /* .component-fade-leave-active до версии 2.1.8 */ {
+.component-fade-enter, .component-fade-leave-to {
   opacity: 0;
 }
 

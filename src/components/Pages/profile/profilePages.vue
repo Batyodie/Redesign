@@ -98,7 +98,7 @@
             <div class="dashboard__body">
               <div class="dashboard__body-top">
              <!--   display counter and scroll statistics-->
-                <span class="statics">{{ val }}</span>
+                <span class="statics">{{val}}</span>
                 <span class="label">views today</span>
               </div>
               <div class="dashboard__body-mid">
@@ -407,6 +407,6 @@ export default {
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

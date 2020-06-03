@@ -7,11 +7,11 @@ import networkPage from '../views/networkPage'
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: profilePage
-  },
+  // {
+  //   path: '/',
+  //   name: 'home',
+  //   component: home
+  // },
   {
     path: '/profilePage',
     name: 'profilePage',

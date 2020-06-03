@@ -34,7 +34,7 @@
     width: 100%;
     height: 190px;
     display: flex;
-    background-image: url("../src/assets/RectangleProfile.png");
+      background-image: url('../assets/RectangleProfile.png');
     background-repeat: no-repeat;
     background-position: center;
     //wallpaper-edit
@@ -52,17 +52,16 @@
         justify-content: space-around;
       }
     }
-
+    //animation click block
     &-icon{
       width: 16px;
       height: 36px;
-      //animation click block
       @extend .active;
       cursor: pointer;
 
     }
+    //animation click block
     &-button{
-      //animation click block
       @extend .active;
       display: flex;
       align-items: center;
@@ -84,9 +83,9 @@
 
       }
     }
+    //animation click block
     &-button-edit{
       border: 0;
-      //animation click block
       @extend .active;
     }
 
@@ -185,8 +184,8 @@
     margin-bottom: 10px;
     width: 100%;
     height: 26%;
+    // button mixin in vars.css, default button
     .button{
-      // button mixin in vars.css, default button
       @include button(240px, 50px, white );
       &__body{
         color: $text;
@@ -253,15 +252,15 @@
       margin-top: 20px;
       margin-bottom: 20px;
       justify-content: space-around;
+      // extend styles link and animation click
       &-footer{
-        // extend styles link and animation click
         @extend .profile__about-item;
         .card__link{
           @extend .profile__about-link;
         }
       }
+      // extent styles title
       &-title{
-        // extent styles title
         @extend .profile__about-title;
       }
       &-title-style{
@@ -280,9 +279,8 @@
         flex-wrap: wrap;
         margin-left: 15px;
 
-
+        // extend animation click
         .card{
-          // extend animation click
           @extend .active;
           cursor: pointer;
           width: 32%;
@@ -308,28 +306,29 @@
 
     }
     //  characteristics
+
+    // extend basis grid position styles
     .profile__characteristics{
       margin: 20px 0;
-      // extend basis grid position styles
       @extend .profile__projects;
       height: 220px;
+      // extend styles link and animation click
       &-footer{
-        // extend styles link and animation click
         @extend .profile__projects-footer;
         .profile__characteristics__link{
           @extend .profile__about-link;
         }
       }
+      // extend styles title
       &-title{
-        // extend styles title
         @extend .profile__about-title;
       }
+      // extend basis grid position styles container for items
+
       &-items{
-        // extend basis grid position styles container for items
         @extend .profile__projects-cards;
         justify-content: space-around;
         .item{
-          //margin-left: 30px;
           width: 29.5%;
           height: 80px;
           display: flex;
@@ -343,8 +342,8 @@
             display: flex;
             justify-content: space-between;
           }
+          // extend title styles
           &__title{
-            // extend title styles
             @extend .card__title;
 
           }
@@ -410,8 +409,8 @@
       justify-content: center;
       flex-direction: column;
       margin: 10px 0;
-      &-title{
         //extend style title
+      &-title{
         @extend .profile__about-title;
         margin-bottom: 25px;
       }
@@ -426,8 +425,8 @@
             margin-left: 16px;
             width: 100%;
           }
+          //extend style title
           &__title{
-            //extend style title
             @extend .profile__about-title;
             font-family: $medium;
             font-size: 14px;
@@ -445,24 +444,24 @@
             font-size: 10px;
             line-height: 150%;
           }
+          //extend style sub-title
           &__sub-title-location{
             margin-left: 15px;
-            //extend style sub-title
             @extend .item__sub-title;
             font-family: $light;
           }
+          //extend basis grid position container style
           &__data{
-            //extend basis grid position container style
             @extend .item__sub-title-container;
             &-style{
               margin-left: 0;
               @extend .item__sub-title-location;
             }
+            //extend link and click style
             &-router{
               display: flex;
               align-items: center;
               margin-left: 15px;
-              //extend link and click style
               @extend .profile__about-item;
               a{
                 @extend .profile__about-link;
@@ -482,8 +481,9 @@
   }
 
   //section sidebar menu right
+
+  //main container
   .sidebar{
-    //main container
     width: 23.7%;
     // sidebar flex container
     .dashboard{
@@ -506,8 +506,9 @@
         text-transform: uppercase;
         font-family: $medium;
       }
+      // extend animation click
+
       &__link{
-        // extend animation click
         @extend .active;
         font-size: 12px;
         line-height: 11px;
@@ -516,8 +517,6 @@
         text-transform: uppercase;
         color: $accent;
         text-decoration: none;
-
-
       }
       // body dashboard
       &__body{
@@ -534,7 +533,6 @@
           .statics{
             font-size: 52px;
             line-height: 50px;
-            /* identical to box height */
             text-transform: uppercase;
             color: $accent;
             font-family: $medium;
@@ -564,27 +562,27 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      // extend basis grid position container style
       &__header{
-        // extend basis grid position container style
         @extend .dashboard__header;
         justify-content: space-between;
 
       }
+      // extend title style
       &__title{
-        // extend title style
         @extend .dashboard__title;
         margin-left: 10px;
       }
+      // extend link style and animation click
       &__link{
-        // extend link style and animation click
         @extend .dashboard__link;
         margin-right: 29px;
         @extend .active;
       }
+      // extend basis grid position container style
       &__body{
         display: flex;
         flex-direction: column;
-        // extend basis grid position container style
         @extend .dashboard__body;
 
       }
@@ -594,8 +592,8 @@
         flex-direction: column;
 
       }
+      // extend animation click
       &__item{
-        // extend animation click
         @extend .active;
         width: 90%;
         display: flex;
@@ -632,50 +630,50 @@
       }
     }
     // section recommendations
+
+    // extend basis grid position container style
     .recommendations{
-      // extend basis grid position container style
       @extend .visitors;
+      // extend basis grid position container style
       &__header{
-        // extend basis grid position container style
         @extend .visitors__header;
 
       }
+      // extend title style
       &__title{
-        // extend title style
         @extend .visitors__title;
       }
+      // extend basis grid position container style
       &__body{
-        // extend basis grid position container style
         @extend .visitors__body;
 
       }
+      // extend basis grid position container style
       &__list{
-        // extend basis grid position container style
         @extend .visitors__list
 
 
       }
+      // extend basis grid position container style and anim click
       &__item{
-        // extend basis grid position container style and anim click
         @extend .visitors__item;
         @extend .active;
+        // extend title style
         &-title{
-          // extend title style
           @extend .visitors__item-title
         }
+        // extend sub-title style
         &-sub-title{
-          // extend sub-title style
           @extend .visitors__item-sub-title
         }
-
+        // extend basis grid position container style
         &-container-image{
           cursor: pointer;
-          // extend basis grid position container style
         @extend .visitors__titles-container-image;
         }
+        // extend basis grid position container style
         &-container{
           cursor: pointer;
-          // extend basis grid position container style
           @extend .visitors__titles-container;
           margin-left: 14px;
         }

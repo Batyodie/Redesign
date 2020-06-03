@@ -5,17 +5,15 @@
       v-bind:key="n.id"
     />
     <router-view/>
-    <div class="main">
-      <sectionMain />
-    </div>
     <section-footer />
+    <h1>123</h1>
   </div>
 </template>
 
 <script>
 import HeaderNav from './components/headerNav'
 import SectionFooter from './components/sectionFooter'
-import SectionMain from './components/sectionMain'
+// import SectionMain from './components/sectionMain'
 
 export default {
   name: 'app',
@@ -27,7 +25,7 @@ export default {
     }
   },
   components: {
-    SectionMain,
+  //   SectionMain,
     SectionFooter,
     HeaderNav
   }
@@ -35,6 +33,6 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "styles/index";
+  /*@import "styles/index";*/
 
 </style>

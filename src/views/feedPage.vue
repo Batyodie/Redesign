@@ -1,16 +1,17 @@
 <template>
     <div>
-      <feedPages
-      :basisPosts="basisPosts"
-      />
+     <feed-pages
+       :basisPosts="basisPosts"
+     />
     </div>
 </template>
 
 <script>
-import feedPages from '../components/Pages/feed/feedPages'
+
+import FeedPages from '../components/Pages/feed/feedPages'
 export default {
   name: 'feedPage',
-  components: { feedPages },
+  components: { FeedPages },
   data: function () {
     return {
       postId: Date.now(),

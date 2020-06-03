@@ -1,5 +1,7 @@
 <template>
-    <network-pages />
+    <div>
+      <network-pages />
+    </div>
 </template>
 
 <script>

@@ -1,55 +1,12 @@
-@font-face {
-  font-family: "GothamProRegular";
-  src: url("/GothamProRegular.eot");
-  src: url("/GothamProRegular.eot?#iefix")format("embedded-opentype"),
-  url("/GothamProRegular.woff") format("woff"),
-  url("/GothamProRegular.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Roboto-Regular";
-
-  src: url("/Roboto-Regular.woff") format("woff"), /* Modern Browsers */
-  url("/Roboto-Regular.woff2") format("woff2"); /* Modern Browsers */
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "GothamProBold";
-  src: url("/GothamProBold.eot");
-  src: url("/GothamProBold.eot?#iefix")format("embedded-opentype"),
-  url("/GothamProBold.woff") format("woff"),
-  url("/GothamProBold.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
-}
-
-
-
-
-@font-face {
-  font-family: "GothamProMedium";
-  src: url("/GothamProMedium.eot");
-  src: url("/GothamProMedium.eot?#iefix")format("embedded-opentype"),
-  url("/GothamProMedium.woff") format("woff"),
-  url("/GothamProMedium.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: "GothamProLight";
-  src: url("/GothamProLight.eot");
-  src: url("/GothamProLight.eot?#iefix")format("embedded-opentype"),
-  url("/GothamProLight.woff") format("woff"),
-  url("/GothamProLight.ttf") format("truetype");
-  font-style: normal;
-  font-weight: normal;
-}
-
-
-
-
-
+@font-face {font-family: "Gotham";
+  src: url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.eot");
+  src: url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.eot?#iefix")
+  format("embedded-opentype"),
+  url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.woff2")
+  format("woff2"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.woff")
+  format("woff"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.ttf")
+  format("truetype"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.svg#Gotham")
+  format("svg"); }
+@font-face {font-family: "Gotham Pro"; src: url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.eot"); src: url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.woff") format("woff"), url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.svg#Gotham Pro") format("svg"); }
+@font-face {font-family: "Gotham Pro Medium"; src: url("//db.onlinewebfonts.com/t/059288033e0f23aa4c5b19f0965ccc0d.eot"); src: url("//db.onlinewebfonts.com/t/059288033e0f23aa4c5b19f0965ccc0d.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/059288033e0f23aa4c5b19f0965ccc0d.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/059288033e0f23aa4c5b19f0965ccc0d.woff") format("woff"), url("//db.onlinewebfonts.com/t/059288033e0f23aa4c5b19f0965ccc0d.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/059288033e0f23aa4c5b19f0965ccc0d.svg#Gotham Pro Medium") format("svg"); }
+@font-face {font-family: "Gotham Pro Light"; src: url("//db.onlinewebfonts.com/t/323b7229abd327d428021a6d49a7413d.eot"); src: url("//db.onlinewebfonts.com/t/323b7229abd327d428021a6d49a7413d.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/323b7229abd327d428021a6d49a7413d.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/323b7229abd327d428021a6d49a7413d.woff") format("woff"), url("//db.onlinewebfonts.com/t/323b7229abd327d428021a6d49a7413d.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/323b7229abd327d428021a6d49a7413d.svg#Gotham Pro Light") format("svg"); }

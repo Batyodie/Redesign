@@ -1,10 +1,12 @@
 <template>
-   <!-- body main about section-->
+   <!--adding sections-->
    <section class="adding">
+     <!--adding list-->
     <ul class="adding__list">
+      <!--adding items-->
       <li class="adding__item">
        <figure class="adding__data">
-         <img src="../../../../../assets/Brandon.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
+         <img src="../../../../../../../assets/Brandon.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
          <figcaption class="adding__full-name">
            <h2 class="adding__title">
              Brandon Wilson
@@ -24,13 +26,29 @@
             Hey, I saw your works. I like it! Can we do something together? Or maybe you have project for UX at the moment?
           </p>
         </div>
-        <div class="adding__buttons">
+        <div v-if="accepted" class="adding__buttons">
+          <transition name="fade">
+          <button class="button active">
+            <span class="button__prepend"></span>
+            <span class="button__body">ACCEPTED</span>
+            <span class="button__append"></span>
+          </button>
+          </transition>
+        </div>
+        <div v-else-if="cancellation" class="adding__buttons">
+            <button @click="cancellation = false" class="button active">
+              <span class="button__prepend"></span>
+              <span class="button__body">cancel</span>
+              <span class="button__append"></span>
+            </button>
+        </div>
+        <div @click="accepted = true" v-else class="adding__buttons">
           <button class="button active">
             <span class="button__prepend"></span>
             <span class="button__body">ACCEPT</span>
             <span class="button__append"></span>
           </button>
-          <button class="button active">
+          <button @click="cancellation = true" class="button active">
             <span class="button__prepend"></span>
             <span class="button__body">DECLINE</span>
             <span class="button__append"></span>
@@ -39,7 +57,7 @@
       </li>
        <li class="adding__item">
       <figure class="adding__data">
-        <img src="../../../../../assets/tereza.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
+        <img src="../../../../../../../assets/tereza.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
         <figcaption class="adding__full-name">
           <h2 class="adding__title">
             Theresa Steward
@@ -72,6 +90,7 @@
       </div>
     </li>
     </ul>
+     <!--section connections-->
      <div class="connections">
        <div class="connections__header-title">
          <h2 class="connections__title network__title ">
@@ -79,10 +98,12 @@
          </h2>
        </div>
        <div class="connections__container">
+         <!--connections list-->
        <ul class="connections__list">
+         <!--connections items-->
          <li class="connections__item">
            <figure class="adding__data">
-             <img src="../../../../../assets/audrey.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
+             <img src="../../../../../../../assets/audrey.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
              <figcaption class="adding__full-name">
                <h2 class="adding__title">
                  Audrey Alexander
@@ -95,7 +116,7 @@
          </li>
          <li class="connections__item">
            <figure class="adding__data">
-             <img src="../../../../../assets/darlene.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
+             <img src="../../../../../../../assets/darlene.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
              <figcaption class="adding__full-name">
                <h2 class="adding__title">
                  Darlene Black
@@ -109,10 +130,12 @@
        </ul>
        </div>
        <div class="connections__container">
+         <!--connections list 2-->
        <ul class="connections__list2">
+         <!--connections items -->
          <li class="connections__item">
            <figure class="adding__data">
-             <img src="../../../../../assets/kyle.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
+             <img src="../../../../../../../assets/kyle.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
              <figcaption class="adding__full-name">
                <h2 class="adding__title">
                  Kyle Fisher
@@ -125,7 +148,7 @@
          </li>
          <li class="connections__item">
            <figure class="adding__data">
-             <img src="../../../../../assets/eduardo.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
+             <img src="../../../../../../../assets/eduardo.png" alt="friend" class="adding__fio-image" style="border-radius: 26px;">
              <figcaption class="adding__full-name">
                <h2 class="adding__title">
                  Eduardo Russell
@@ -146,7 +169,7 @@
 
 <script>
 export default {
-  name: 'profile',
+  name: 'RECEIVED',
   data: function () {
     return {
       show: false,
@@ -157,7 +180,9 @@ export default {
       showRec: false,
       Profile: false,
       Articles: false,
-      interests: false
+      interests: false,
+      accepted: false,
+      cancellation: false
 
     }
   }

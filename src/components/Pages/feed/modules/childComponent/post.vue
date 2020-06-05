@@ -12,8 +12,7 @@
         <button class="button active">
           <span class="button__social-icon-prepend"></span>
           <span class="button__social-icon-body">
-            <vue-dropdown :config="config">
-        </vue-dropdown>
+
           </span>
           <span class="button__social-icon-append"></span>
         </button>

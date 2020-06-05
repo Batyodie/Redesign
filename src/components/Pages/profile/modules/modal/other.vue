@@ -149,9 +149,8 @@ export default {
     $text: #181818;
       /* main container*/
   .more-menu{
-    z-index: 20;
+    z-index: 1000;
     transition: 2s;
-    position: absolute;
     top: 0px;
     left: 950px;
     background: #FFFFFF;
@@ -160,8 +159,15 @@ export default {
     flex-direction: column;
     width: 32%;
     max-width: 460px;
-    height: 900px;
+    height: 100%;
+    position: fixed;
     border: 0;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar { width: 0; }
+    &
     /*more menu position container*/
     &__container{
       min-width: 320px;
@@ -410,17 +416,6 @@ export default {
     }
   }
   /* media position modal */
-  @media (max-width: 1980px) {
-    .more-menu{
-      left: 956px;
-      top: -1px;
-    }
-  }
-  @media (max-width: 1360px) {
-    .more-menu{
-      left: 910px;
-    }
-  }
   @media (max-width: 1300px) {
     .more-menu{
       left: 825px;
@@ -444,52 +439,30 @@ export default {
   }
   @media (max-width: 1200px) {
     .more-menu {
-      left: 780px;
       min-width: 340px;
-    }
-  }
-  @media (max-width: 1100px) {
-    .more-menu {
-      left: 725px;
-      min-width: 340px;
-    }
-  }
-  @media (max-width: 1024px) {
-    .more-menu{
-      left: 676px;
-    }
-  }
-  @media (max-width: 900px) {
-    .more-menu{
-      left: 540px;
-    }
-  }
-  @media (max-width: 800px) {
-    .more-menu{
-      left: 540px;
-    }
-  }
-  @media (max-width: 768px) {
-    .more-menu{
-      left: 402px;
     }
   }
   @media (max-width: 425px) {
     .more-menu{
-      left: 0px;
       min-width: 415px;
+      .access{
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
   @media (max-width: 375px) {
     .more-menu{
-      left: 0px;
-      min-width: 355px;
+      min-width: 380px;
     }
   }
   @media (max-width: 320px) {
     .more-menu{
-      left: 11px;
-      min-width: 325px;
+      min-width: 320px;
+      .access{
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
   @media (max-width: 320px){
@@ -498,6 +471,13 @@ export default {
     }
     .services{
       align-items: center;
+    }
+  }
+  @media (max-width: 1440px){
+    .more-menu{
+      top: 0 !important;
+      right: 0px !important;
+      left: auto !important;
     }
   }
 

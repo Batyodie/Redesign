@@ -436,10 +436,17 @@
 // Window width <= 768px
 @include md {
   .footer{
+    justify-content: space-around;
     .navigation{
-
+      &__header{
+        width: 200px;
+        justify-content: center;
+      }
       &__body{
-        width: 300px;
+        width: 200px;
+        align-items: center;
+        flex-direction: column;
+        height: 300px;
       }
       &__list{
         width: 90px;
@@ -453,6 +460,9 @@
 }
 // Window width <= 668px
 @include rwd(668){
+  .hidden{
+    display: block;
+  }
   .footer{
     .navigation{
       display: none;

@@ -6,15 +6,18 @@
   display: flex;
   justify-content: center;
   position: relative;
+  // position container
   .container{
     width: 85%;
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
+    // aside left menu
     .sidebar{
-      width: 23.7%;
+      width: 290px;
       height: 306px;
       margin-right: 40px;
+      // menu list
       &__list{
         width: 290px;
         display: flex;
@@ -22,23 +25,24 @@
         margin-bottom: 17px;
 
       }
+      // menu items
       &__item{
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 32px;
-        margin-bottom: 17px;
+        margin-bottom: 25px;
         transition: 0.5s;
-        //&:hover{
-        //  transform: translateX(15px);
-        //  &::before{
-        //    content: '';
-        //    height: 50px;
-        //    width: 10px;
-        //    background-color: $accent;
-        //  }
-        //}
+        cursor: pointer;
+        // color style 2 item in menu
+        &:nth-child(2){
+          .sidebar__counter{
+            color: #ED8F03;
+            margin-right: 8px;
+          }
+        }
       }
+      // item wrapper
       &__container{
         width: 195px;
         height: 32px;
@@ -46,37 +50,13 @@
         align-items: center;
         transition: 0.5s;
         margin-left: 30px;
-        &::before{
-          content: '';
-          height: 50px;
-          transition: 0.5s;
-          width: 1px;
-          background-color: $accent;
-          opacity: 0;
-
-        }
-        &:hover {
-          transform: translateX(10px);
-         .sidebar__link{
-           opacity: 0.6;
-         }
-        }
-        &:hover{
-          &::before{
-            margin-right: 28px;
-            content: '';
-            height: 50px;
-            width: 10px;
-            background-color: $accent;
-            opacity: 1 !important;
-          }
-        }
       a{
         display: flex;
         text-decoration: none;
         color: $text;
       }
       }
+      // sidebar link
       &__link{
         display: flex;
         align-items: center;
@@ -86,26 +66,31 @@
         color: $text;
         opacity: 1;
         text-decoration: none;
+        // active link style
         &.router-link-exact-active{
           .sidebar__container{
             transition: 0.5s;
           }
         }
       }
+      //item logo logo
       &__logo{
         display: flex;
         margin-right: 10px;
       }
+      // item title
       &__title{
         font-size: 12px;
         line-height: 11px;
         font-family: $medium;
       }
+      // item statics
       &__statics{
         height: 32px;
         display: flex;
         align-items: center;
         margin-right: 30px;
+        // icon statics
         &-icon{
           width: 9px;
           height: 9px;
@@ -118,16 +103,19 @@
         display: table;
         clear: both;
       }
+      // item counter
       &__counter{
         font-size: 12px;
         line-height: 11px;
         font-family: $bold;
+        // nth child color
         &__color{
           color: #ED8F03;
           margin-right: 8px;
         }
       }
     }
+    // main section in network
     &-section-main{
       display: flex;
       justify-content: space-between;
@@ -136,17 +124,28 @@
       width: 69.5%;
     }
   }
+  // header main
   &__header-main{
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-bottom: 40px;
+    // react button container
     .profile__tabs{
       height: 60px;
       width: calc(100% - 240px);
       margin-bottom: 36px;
+      // active button
+      .button__active{
+        background-color: $accent;
+        // text color
+        .button__body{
+          color: #FFFFFF;
+        }
+      }
     }
   }
+  // section main header title position
   &__header-title{
     width: 100%;
     display: flex;
@@ -154,6 +153,7 @@
     background: linear-gradient(180deg, rgba(241, 244, 248, 0.8) 0%, rgba(241, 244, 248, 0) 100%);
     margin-bottom: 5px;
   }
+  // section main header title style
   &__title{
     font-size: 12px;
     line-height: 11px;
@@ -165,25 +165,31 @@
       color: $accent;
     }
   }
+  // body main
   &__body-main{
+    // wrapper
     .adding{
       width: 100%;
       min-width: 50%;
       display: flex;
       flex-direction: column;
+      // adding list
       &__list{
         display: flex;
         flex-direction: column;
       }
+      // adding item
       &__item{
         display: flex;
         align-items: center;
         height: 95px;
       }
+      // adding face image
       &__fio-image{
         width: 52px;
         height: 52px;
       }
+      // adding full name wrapper
       &__data{
         margin-left: 30px ;
         margin-right: 20px;
@@ -196,6 +202,7 @@
           justify-content: center;
         }
       }
+      // adding title
       &__title{
         font-size: 14px;
         line-height: 13px;
@@ -203,23 +210,27 @@
         font-family: $medium;
         margin-bottom: 5px;
       }
+      // adding subtitle
       &__sub-title{
         font-size: 10px;
         line-height: 150%;
         margin-bottom: 3px;
         color: $text;
       }
+      // extend basis style
       &__link{
         @extend .adding__sub-title;
         text-decoration: none;
         color: $accent;
         margin-bottom: 0px;
       }
+      // adding message wrapper
       &__message{
         width: 37.5%;
         margin: 0px 30px;
         position: relative;
         min-height: 46px;
+        // decorate line
         &::after{
           content: '';
           background-color: $accent;
@@ -232,12 +243,14 @@
           left: -20px;
         }
       }
+      // extend basis style
       &__copy{
         @extend .adding__sub-title;
         color: rgba(24, 24, 24, 0.6);
         font-size: 11px;
         margin-bottom: 0px;
       }
+      // adding accept buttons
       &__buttons{
         .button{
           border-radius: 4px;
@@ -245,15 +258,18 @@
           width: 91px;
           height: 32px;
           background-color: $accent;
+          // style for first button
           &:first-child{
             margin-right: 15px;
           }
+          // style for last button
           &:last-child{
             background-color: #FFFFFF;
             .button__body{
               color: #B7B7B7;
             }
           }
+          // extend basis style
           &__body{
             @extend .network__title;
             color: #FFFFFF;
@@ -261,24 +277,30 @@
         }
       }
     }
+    // section connections
     .connections{
+      // connections header title
       &__header-title{
         margin-bottom: 40px;
       }
       display: flex;
       flex-direction: column;
+      // wrapper
       &__container{
         width: 100%;
        display: flex;
       }
+      // connections list
       &__list{
         display: flex;
         width: 100%;
       }
+      // connections list 2
       &__list2{
         @extend .connections__list;
 
       }
+      // connections items
       &__item{
         width: 100%;
         height: 95px;
@@ -292,6 +314,9 @@
     }
   }
 }
+// media
+
+// width 930px
 @include rwd(930){
   .network{
     .container{
@@ -326,6 +351,7 @@
         }
     }
   }
+// max width 992px
 @include lg{
   .network{
     justify-content: space-between;
@@ -334,12 +360,14 @@
     }
   }
 }
+// max width 768px
 @include md {
   .network {
     .container {
       .container-section-main{
         .network__header-main{
           .profile__tabs{
+            width: 190px;
             height: 160px;
             .button{
               width: 240px !important;
@@ -380,6 +408,7 @@
     }
   }
 }
+// max width 576px
 @include sm{
   .network {
     justify-content: space-between;
@@ -391,6 +420,7 @@
       .sidebar {
         width: 100%;
         margin-right: 10px;
+        margin-bottom: 40px;
 
         &__list {
           width: 80%;
@@ -477,6 +507,7 @@
     }
   }
 }
+//  max width 480px
 @include rwd(480) {
   .network {
     .container {
@@ -548,6 +579,7 @@
     }
   }
 }
+//  max width 320px
 @include rwd(320){
   .network {
     justify-content: space-between;

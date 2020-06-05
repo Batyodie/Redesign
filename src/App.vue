@@ -4,9 +4,13 @@
       v-for="n in counters"
       v-bind:key="n.id"
     />
+    <transition
+      name="fade"
+      mode="out-in"
+    >
     <router-view/>
+    </transition>
     <section-footer />
-    <h1>123</h1>
   </div>
 </template>
 
@@ -34,5 +38,16 @@ export default {
 
 <style lang="scss">
   /*@import "styles/index";*/
+  .fade-enter-active,
+  .fade-leave-active {
+    transition-duration: 0.3s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+  }
+
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0
+  }
 
 </style>

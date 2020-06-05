@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import profilePage from '../views/profilePage'
 import feedPage from '../views/feedPage'
 import networkPage from '../views/networkPage'
+import jobsPage from '../views/jobsPage'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,12 @@ const routes = [
     path: '/networkPage',
     name: 'networkPage',
     component: networkPage
+
+  },
+  {
+    path: '/jobsPage',
+    name: 'jobsPage',
+    component: jobsPage
 
   }
 

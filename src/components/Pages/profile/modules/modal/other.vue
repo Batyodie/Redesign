@@ -151,8 +151,6 @@ export default {
   .more-menu{
     z-index: 1000;
     transition: 2s;
-    top: 0px;
-    left: 950px;
     background: #FFFFFF;
     min-width: 320px;
     display: flex;
@@ -163,8 +161,9 @@ export default {
     position: fixed;
     border: 0;
     overflow-x: hidden;
-    top: 0;
-    left: 0;
+    top: 0 !important;
+    right: 0px !important;
+    left: auto !important;
     -ms-overflow-style: none;
     &::-webkit-scrollbar { width: 0; }
     &

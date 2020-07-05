@@ -224,6 +224,7 @@ body{
   @include rwd(390){
       margin: 10px 5px !important;
     .bm-menu{
+      padding-top: 1px;
     }
     .main-nav{
       &__profile{

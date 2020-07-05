@@ -361,9 +361,10 @@
 @include lg {
   .footer{
     .navigation{
-
+      display: none;
       &__body{
         width: 350px;
+
       }
       &__list{
         width: 100px;
@@ -417,7 +418,6 @@
       width: 140px;
       &-body{
         justify-content: flex-end;
-
 
         .select-box{
           width: 30%;
